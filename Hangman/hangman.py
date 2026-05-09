@@ -91,6 +91,14 @@ display = ["_"] * len(chosen_word)
 print(welcome_art)
 print("Word to guess:", " ".join(display))
 
+# checking user input
+guess = input("Guess a letter: ").lower()
+
+for index, letter in enumerate(chosen_word): # iterates through each letter and its index
+    if letter == guess:
+        display[index] = guess
+
+print("Word to guess:", " ".join(display))
 
 
 
