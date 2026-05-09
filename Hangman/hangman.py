@@ -92,17 +92,35 @@ print(welcome_art)
 print("Word to guess:", " ".join(display))
 
 # checking user input
-while "_" in display:
+while "_" in display and lives > 0:
     guess = input("Guess a letter: ").lower()
+
+    correct_guess = False
 
     for index, letter in enumerate(chosen_word): # iterates through each letter and its index
         if letter == guess:
             display[index] = guess
+            correct_guess = True
 
-    print("\nWord to guess:", " ".join(display))
+    if not correct_guess:
+        lives -= 1
+        print(f"OOPS! Wrong guess. Remaining lives: {lives}")
+        print("============================================")
 
-print("\nCongratulations! You won!")
-print(f"The word was: {chosen_word}")
+    print(stages[lives])
+    print("Word to guess:", " ".join(display))
+
+if "_" not in display:
+    print("\nCongratulations! You won!")
+    print(f"The word was: {chosen_word}")
+else:
+    print("\nSorry, you lost!")
+    print(stages[0])
+    print(f"The word was: {chosen_word}")
+
+
+
+
 
 
 
