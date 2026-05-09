@@ -91,9 +91,16 @@ display = ["_"] * len(chosen_word)
 print(welcome_art)
 print("Word to guess:", " ".join(display))
 
+guessed_letters = set()
 # checking user input
 while "_" in display and lives > 0:
     guess = input("Guess a letter: ").lower()
+
+    if guess in guessed_letters:
+        print("You already guessed this letter, try another one :)")
+        continue # skip the rest of this loop iteration and start the next round
+
+    guessed_letters.add(guess)
 
     correct_guess = False
 
@@ -105,7 +112,6 @@ while "_" in display and lives > 0:
     if not correct_guess:
         lives -= 1
         print(f"OOPS! Wrong guess. Remaining lives: {lives}")
-        print("============================================")
 
     print(stages[lives])
     print("Word to guess:", " ".join(display))
