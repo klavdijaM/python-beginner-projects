@@ -105,7 +105,7 @@ def get_guess(guessed_letters):
         guess = input("Guess a letter: ").lower()
 
         if len(guess) != 1 or not guess.isalpha(): # if the guess is not one letter or is not a letter, reject it
-            print("Please enter a single alphabet letter.")
+            print("Please enter a single alphabetical letter.")
             continue
         if guess in guessed_letters:
             print("You already guessed this letter, try another one :)")
@@ -118,9 +118,15 @@ def play_game():
     while True:
         main()
 
-        replay = input("Do you want to play again? (y/n): ").lower()
+        while True:
+            replay = input("Do you want to play again? (y/n): ").lower()
 
-        if replay != "y":
+            if replay in ("y", "n"):
+                break
+
+            print("Please enter y or n.")
+
+        if replay == "n":
             print("Thank you for playing!")
             break
 
@@ -141,7 +147,7 @@ def main():
 
         if not correct_guess:
             lives -= 1
-            print(f"OOPS! Wrong guess. Remaining lives: {lives}")
+            print(f"OOPS! Wrong guess. Remaining lives: {lives}/6")
 
         display_board(lives, display)
 
