@@ -114,6 +114,16 @@ def get_guess(guessed_letters):
         guessed_letters.add(guess)
         return guess
 
+def play_game():
+    while True:
+        main()
+
+        replay = input("Do you want to play again? (y/n): ").lower()
+
+        if replay != "y":
+            print("Thank you for playing!")
+            break
+
 def main():
     # initial game state
     chosen_word = random.choice(word_list)
@@ -139,12 +149,11 @@ def main():
         print("\nCongratulations! You won!")
         print(f"The word was: {chosen_word}")
     else:
-        print("\nSorry, you lost!")
         print(stages[0])
-        print(f"The word was: {chosen_word}")
+        print(f"\nYou lost! The word was: {chosen_word}!")
 
 if __name__ == "__main__":
-    main()
+    play_game()
 
 
 
