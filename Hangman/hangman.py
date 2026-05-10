@@ -101,6 +101,9 @@ def get_guess(guessed_letters):
     while True: # infinite loop - stops when we interrupt it (return)
         guess = input("Guess a letter: ").lower()
 
+        if len(guess) != 1 or not guess.isalpha(): # if the guess is not one letter or is not a letter, reject it
+            print("Please enter a single alphabet letter.")
+            continue
         if guess in guessed_letters:
             print("You already guessed this letter, try another one :)")
             continue  # skip the rest of this loop iteration and start the next round
