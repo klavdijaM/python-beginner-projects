@@ -99,6 +99,9 @@ def process_guess(chosen_word, guess, display):
 
 def get_guess(guessed_letters):
     while True: # infinite loop - stops when we interrupt it (return)
+        if guessed_letters:
+            print("Previously guessed letters:", " ".join(sorted(guessed_letters)))
+
         guess = input("Guess a letter: ").lower()
 
         if len(guess) != 1 or not guess.isalpha(): # if the guess is not one letter or is not a letter, reject it
